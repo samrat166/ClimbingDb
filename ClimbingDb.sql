@@ -35,12 +35,7 @@ CREATE TABLE Members
     Gender ENUM('Male','Female'),
     Address VARCHAR(100),
     PhoneNumber VARCHAR(15),
-    Email VARCHAR(50),
-    GymAddress VARCHAR(100) NULL,
-    SubName VARCHAR(50) NULL,
-    SubDate DATE,
-    FOREIGN KEY(GymAddress) REFERENCES Gym(GymAddress) ON DELETE SET NULL,
-    FOREIGN KEY(SubName) REFERENCES Subscription(SubName) ON DELETE SET NULL
+    Email VARCHAR(50)
 );
 
 CREATE TABLE Buys
