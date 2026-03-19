@@ -1,3 +1,7 @@
+CREATE DATABASE ClimbingDb;
+
+USE ClimbingDb;
+
 CREATE TABLE Gym
 (
     GymAddress VARCHAR(100) PRIMARY KEY,
