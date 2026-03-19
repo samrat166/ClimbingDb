@@ -7,10 +7,11 @@ CREATE TABLE Gym
     GymAddress VARCHAR(100) PRIMARY KEY,
     Capacity INT,
     Budget DECIMAL(10,2),
-    TotalSales DECIMAL(10,2)
+    OpenTime TIME,
+    CloseTime TIME
 );
 
-CREATE TABLE Subscription
+CREATE TABLE Subscriptions
 (
     SubName VARCHAR(50) PRIMARY KEY,
     Price DECIMAL(10,2),
@@ -38,7 +39,13 @@ CREATE TABLE Class
     ClassId VARCHAR(10) PRIMARY KEY,
     StartTime DATETIME,
     Duration INT,
-    Price DECIMAL(10,2)
+    Price DECIMAL(10,2),
+    Capacity INT,
+    GymAddress VARCHAR(100) NULL,
+    Staff      VARCHAR(15)  NULL,
+    FOREIGN KEY (GymAddress) REFERENCES Gym(GymAddress) ON DELETE SET NULL,
+    FOREIGN KEY (Staff)      REFERENCES Staff(StaffID) ON DELETE SET NULL
+
 );
 
 CREATE TABLE Staff
@@ -50,6 +57,8 @@ CREATE TABLE Staff
     Address VARCHAR(100),
     PhoneNumber VARCHAR(15),
     Email VARCHAR(50),
+    Role ENUM('Manager','Instructor','Receptionist'),
+    Salary DECIMAL(10,2),
     GymAddress VARCHAR(100) NULL,
     FOREIGN KEY(GymAddress) REFERENCES Gym(GymAddress) ON DELETE SET NULL
 );
